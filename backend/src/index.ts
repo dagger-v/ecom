@@ -5,6 +5,7 @@ dotenv.config({ path: __dirname + "../../../.env" });
 import cors from "cors";
 
 import { userRouter } from "./routes/user";
+import { productRouter } from "./routes/product";
 
 const port = process.env.PORT || 5000;
 
@@ -13,7 +14,8 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.use("/user", userRouter);
+app.use("/auth", userRouter);
+app.use("/product", productRouter);
 
 // connect to DB
 mongoose.set("strictQuery", false);
